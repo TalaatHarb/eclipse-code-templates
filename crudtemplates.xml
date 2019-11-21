@@ -185,7 +185,7 @@ public interface ${ResourceRepository} extends JpaRepository&lt;${Resource}, ${I
 &#13;
 	@Override&#13;
 	public ${ResourceDto} updateResource(final ${IdType} id, final ${ResourceDto} resourceDto) {&#13;
-		if (resourceDto != null) {&#13;
+		if (id != null &amp;&amp; resourceDto != null) {&#13;
 			resourceDto.setId(id);&#13;
 			final ${Resource} resource = resourceRepository.save(resourceMapper.toEntity(resourceDto));&#13;
 			return resourceMapper.toDto(resource);&#13;
@@ -214,7 +214,7 @@ public interface ${ResourceRepository} extends JpaRepository&lt;${Resource}, ${I
 	 * &#13;
 	 * @return List of all resources&#13;
 	 */&#13;
-	public List&lt;${ResourceDto}&gt; getAllResources();&#13;
+	public List&lt;${ResourceDto}&gt; readAllResources();&#13;
 &#13;
 	/**&#13;
 	 * Method to get a resource given its ID&#13;
@@ -222,7 +222,7 @@ public interface ${ResourceRepository} extends JpaRepository&lt;${Resource}, ${I
 	 * @param id ID of the resource to get&#13;
 	 * @return The resource to get if it is available&#13;
 	 */&#13;
-	public ${ResourceDto} getResource(final ${IdType} id);&#13;
+	public ${ResourceDto} readResource(final ${IdType} id);&#13;
 &#13;
 	/**&#13;
 	 * Method to update a resource&#13;
